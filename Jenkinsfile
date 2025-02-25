@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/your-username/secure-ci-cd-pipeline.git'
+                git 'https://github.com/numesh06/secure-ci-cd-pipeline.git'
             }
         }
 

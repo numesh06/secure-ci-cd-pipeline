@@ -12,7 +12,7 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'github-credentials', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
-                    sh 'git clone https://$GIT_USER:$GIT_PASS@github.com/your-username/private-repo.git'
+                    sh 'git clone https://$GIT_USER:$GIT_PASS@github.com/numesh06/secure-ci-cd-pipeline.git'
                 }
             }
         }

@@ -12,7 +12,13 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'github-PAT-credentials', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
-                    sh 'git clone https://$GIT_USER:$GIT_PASS@github.com/numesh06/secure-ci-cd-pipeline.git'
+                    sh '''
+            if [ -d "secure-ci-cd-pipeline" ]; then
+                echo "Directory exists, removing it..."
+                rm -rf secure-ci-cd-pipeline
+            fi
+            git clone https://$GIT_USER:$GIT_PASS@github.com/numesh06/secure-ci-cd-pipeline.git
+            '''
                 }
             }
         }

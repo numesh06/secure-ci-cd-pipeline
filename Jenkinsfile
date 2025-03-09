@@ -51,6 +51,7 @@ pipeline {
         }
         stage('Deploy to AWS ECS') {
             steps {
+                sh 'cd terraform'
                 sh 'terraform apply -auto-approve'
             }
         }

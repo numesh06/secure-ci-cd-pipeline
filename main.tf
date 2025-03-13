@@ -20,14 +20,23 @@ resource "aws_iam_role" "ecs_task_role" {
     ]
   }
   EOF
+lifecycle {
+    prevent_destroy = true
+  }
 }
 
 # Attach the required AWS policy to the IAM role
 resource "aws_iam_role_policy_attachment" "ecs_task_execution_role" {
   role       = aws_iam_role.ecs_task_role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+  lifecycle {
+    prevent_destroy = true
+  }
 }
-
+resource "aws_cloudwatch_log_group" "my_app_log_group" {
+  name              = "/ecs/my-app"
+  retention_in_days = 7
+}
 resource "aws_ecs_task_definition" "my_task" {
   family                   = "my-task"
   network_mode             = "awsvpc"
@@ -49,8 +58,16 @@ resource "aws_ecs_task_definition" "my_task" {
           "containerPort": 80,
           "hostPort": 80
         }
-      ]
+      ],
+"logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "/ecs/my-app",
+        "awslogs-region": "${var.aws_region}",
+        "awslogs-stream-prefix": "my-app"
+      }
     }
+   }
   ]
   DEFINITION
 }

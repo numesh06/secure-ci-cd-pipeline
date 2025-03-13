@@ -124,4 +124,9 @@ load_balancer {
     security_groups = var.security_group_ids
     assign_public_ip = true
   }
+deployment_controller {
+    type = "ECS"
+  }
+
+  force_new_deployment = true
 }

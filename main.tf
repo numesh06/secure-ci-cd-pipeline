@@ -55,8 +55,8 @@ resource "aws_ecs_task_definition" "my_task" {
       "networkMode": "awsvpc",
       "portMappings": [
         {
-          "containerPort": 80,
-          "hostPort": 80
+          "containerPort": 3000,
+          "hostPort": 3000
         }
       ],
 "logConfiguration": {
@@ -116,7 +116,7 @@ resource "aws_ecs_service" "my_service" {
 load_balancer {
     target_group_arn = aws_lb_target_group.my_target_group.arn
     container_name   = "my-app"
-    container_port   = 80
+    container_port   = 3000
   }
 
   network_configuration {

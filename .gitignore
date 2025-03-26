@@ -1,6 +1,8 @@
- # Terraform state files
+# Terraform state files
 terraform.tfstate
 terraform.tfstate.backup
+tfplan
+.terraform/            # <-- Add this to ignore the local Terraform cache
 
 # Log files
 *.log
@@ -10,6 +12,9 @@ terraform.tfstate.backup
 
 # Node.js dependencies
 node_modules/
+
+# SonarQube files
+.scannerwork/          # <-- Add this
 
 # Python bytecode
 __pycache__/

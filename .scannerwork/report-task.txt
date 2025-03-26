@@ -1,6 +1,0 @@
-projectKey=securing-ci-cd-pipeline
-serverUrl=http://localhost:9000
-serverVersion=25.3.0.104237
-dashboardUrl=http://localhost:9000/dashboard?id=securing-ci-cd-pipeline
-ceTaskId=298dfb87-88f0-4587-9c3f-dd9c7d2320f7
-ceTaskUrl=http://localhost:9000/api/ce/task?id=298dfb87-88f0-4587-9c3f-dd9c7d2320f7
